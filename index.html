@@ -1,14 +1,60 @@
-<html>
+﻿<html>
 <head>
 	<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="Design.css" />
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Exo:Light" />
-	<script type="text/javascript" src="Functions.js" > </script>
+	<script type="text/javascript" src="Functions.js"> </script>
 	<title>CS Clicker</title>
 </head>
 <body>
-	<input id="btn", type="button", value="Are you ready?"/>
+	<input id="btn" type="button" value="Are you ready?"/>
+	
+	<div id="animationArea">
+		<p id="bitsCounter">Bits: 0.0</p>
+
+		<input id="saveBtn" type="button" value="Save"/>
+		<input id="loadBtn" type="button" value="Load"/>
+
+		<div id="antiIdler">
+			<p style="color: white">Click Here!</p>
+			<input id="clickerButton" type="button"/>
+		</div>
+
+		<div id="autosaveArea">
+			<p>Autosave Completed!</p>
+		</div>
+	</div>
+
+	<div id="upgradeArea">
+		<h1 id="upgradeHeader">Upgrade Area</h1>
+		<table id="upgradeList">
+			<tr>
+				<td id="keyloggerBtn">
+					Keyloggers: 0&nbsp;&nbsp;&nbsp;&nbsp;Bits/Sec: 0<br>
+					Price: 10
+				</td>
+			</tr>
+			<tr>
+				<td id="phishingSiteBtn">
+					Phishing Sites: 0&nbsp;&nbsp;&nbsp;&nbsp;Bits/Sec: 0<br>
+					Price: 100
+				</td>
+			</tr>
+			<tr>
+				<td id="botnetBtn">
+					Botnets: 0&nbsp;&nbsp;&nbsp;&nbsp;Bits/Sec: 0<br>
+					Price: 1000
+				</td>
+			</tr>
+			<tr>
+				<td id="superComputerBtn">
+					Super Computers: 0&nbsp;&nbsp;&nbsp;&nbsp;Bits/Sec: 0<br>
+					Price: 10000
+				</td>
+			</tr>
+		</table>
+	</div>
 
 	<script>pageInit();</script>
 </body>

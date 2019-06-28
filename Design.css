@@ -1,6 +1,6 @@
 @keyframes bg-scrolling-reverse {
 	100% {
-		background-position: 3.25vw 3.25vw;
+		background-position: 3.25vmax 3.25vmax;
 	}
 }
 
@@ -24,12 +24,12 @@
 
 body {
 	background: url(images/invertPlotSquare.png) repeat 0 0;
-	background-size: 3.2552083vw 3.2552083vw;
+	background-size: 3.2552083vmax 3.2552083vmax;
 	animation: bg-scrolling-reverse .92s infinite;
 	animation-timing-function: linear;
 	
 	font-family: Exo;
-	font-size: 1.3vw;
+	font-size: 1.3vmax;
 }
 
 #btn {
@@ -58,7 +58,7 @@ body {
 	border-bottom-left-radius: 25%;
 	border-bottom-right-radius: 25%;
 	outline: none;
-	height: 8%;
+	height: 8vmin;
 	padding: 1% 2%;
 	position: fixed;
 	cursor: pointer;
@@ -90,11 +90,11 @@ body {
 }
 
 #bitsCounter {
-	padding: 1.3vw 1.3vw 1.3vw 1.3vw;
+	padding: 1.3vmax 1.3vmax 1.3vmax 1.3vmax;
 	width: 50%;
 	border-bottom-right-radius: 50%;
 	overflow: hidden;
-	font-size: 2.6vw;
+	font-size: 2.6vmax;
 	color: white;
 	background-color: rgba(0,0,0,0.7);
 	left: 8%;
@@ -111,10 +111,10 @@ body {
 }
 
 #clickerButton {
-	width: 6.9vw;
-	height: 6.9vw;
+	width: 6.9vmax;
+	height: 6.9vmax;
 	background: url(images/Button.png) no-repeat;
-	background-size: 100% 6.9vw;
+	background-size: 100% 6.9vmax;
 	cursor: pointer;
 	border: none;
 	border-radius: 100%;
@@ -140,8 +140,8 @@ body {
 	width: 25%;
 	left: 75%;
 	background: url(images/cutGreenFallingCode.png) no-repeat;
-	background-size: 100% 1.3vw;
-	box-shadow:inset 0px 0px 0px 0.65vw #0a0;
+	background-size: 100% 1.3vmax;
+	box-shadow:inset 0px 0px 0px 0.65vmax #0a0;
 	visibility: hidden;
 	overflow: hidden;
 	position: absolute;
@@ -160,7 +160,7 @@ body {
 }
 
 #upgradeList {
-	transform: translate(0.65vw);
+	transform: translate(0.65vmax);
 	text-decoration: none;
 	color: white;
 	-webkit-touch-callout: none;
@@ -171,10 +171,19 @@ body {
             user-select: none;
 }
 
+td {
+	width: 21.5vmax;
+	padding: 1vmax;
+	background: url(images/UpgradeButtons.png) no-repeat;
+	background-size: 100% 10.612vmax;
+	overflow: hidden;
+	cursor: pointer;
+}
+
 #autosaveArea {
 	bottom: 0%;
 	width: 15%;
-	padding-left: 1.3vw;
+	padding-left: 1.3vmax;
 	position: fixed;
 	background-color: rgba(0,0,0,0.7);
 	color: white;
@@ -195,13 +204,4 @@ body {
 	animation-duration: 4s;
 	animation-iteration-count: 1;
 	animation-timing-function: linear;
-}
-
-td {
-	width: 21.5vw;
-	padding: 1vw;
-	background: url(images/UpgradeButtons.png) no-repeat;
-	background-size: 100% 10.612vw;
-	overflow: hidden;
-	cursor: pointer;
 }

@@ -20,6 +20,7 @@ function pageInit() {
 	let keyloggerBtn = document.getElementById("keyloggerBtn");
 	let phishingSiteBtn = document.getElementById("phishingSiteBtn");
 	let botnetBtn = document.getElementById("botnetBtn");
+	let superComputerBtn = document.getElementById("superComputerBtn");
 
 	btn.addEventListener('click', removeButton);
 	clickerBtn.addEventListener('click', function(){updateBits(clickBitsAmount)});
@@ -29,6 +30,7 @@ function pageInit() {
 	keyloggerBtn.addEventListener('click', function(){buyUpgrade(1)});
 	phishingSiteBtn.addEventListener('click', function(){buyUpgrade(2)});
 	botnetBtn.addEventListener('click', function(){buyUpgrade(3)});
+	superComputerBtn.addEventListener('click', function(){buyUpgrade(4)});
 	
 	loadGameState();
 }
@@ -63,6 +65,8 @@ function saveGameState() {
 	localStorage.setItem('phishingSitePrice', phishingSitePrice);
 	localStorage.setItem('botnetAmount', botnetAmount);
 	localStorage.setItem('botnetPrice', botnetPrice);
+	localStorage.setItem('superComputerAmount', superComputerAmount);
+	localStorage.setItem('superComputerPrice', superComputerPrice);
 }
 
 function autoSavePopup() {
@@ -93,6 +97,11 @@ function loadGameState() {
 		botnetPrice = parseInt(localStorage.getItem('botnetPrice'));
 		printBotnets();
 	}
+	if (localStorage.getItem('superComputerAmount') !== null) {
+		superComputerAmount = parseInt(localStorage.getItem('superComputerAmount'));
+		superComputerPrice = parseInt(localStorage.getItem('superComputerPrice'));
+		printSuperComputers();
+	}
 }
 
 function buyUpgrade(selector) {
@@ -105,40 +114,67 @@ function buyUpgrade(selector) {
 				
 				printBits();
 				printKeyloggers();
+				break;
 			}
 		case 2:
 			if (bits >= phishingSitePrice) {
 				bits -= phishingSitePrice;
 				phishingSiteAmount++;
-				phishingSitePrice = Math.floor(100 * Math.pow(1.1, phishingSiteAmount));
+				phishingSitePrice = Math.floor(100 * Math.pow(1.15, phishingSiteAmount));
 
 				printBits();
 				printPhishingSites();
+				break;
 			}
 		case 3:
 			if (bits >= botnetPrice) {
 				bits -= botnetPrice;
 				botnetAmount++;
-				botnetPrice = Math.floor(1000 * Math.pow(1.1, botnetAmount));
+				botnetPrice = Math.floor(1000 * Math.pow(1.2, botnetAmount));
 
 				printBits();
 				printBotnets();
+				break;
+			}
+		case 4:
+			if (bits >= superComputerPrice) {
+				bits -= superComputerPrice;
+				superComputerAmount++;
+				superComputerPrice = Math.floor(10000 * Math.pow(1.25, superComputerAmount));
+
+				printBits();
+				printSuperComputers();
+				break;
 			}
 	}
 }
 
 function updatePriceChanges() {
 	keyloggerPrice = Math.floor(10 * Math.pow(1.1, keyloggerAmount));
-	phishingSitePrice = Math.floor(100 * Math.pow(1.1, phishingSiteAmount));
-	botnetPrice = Math.floor(1000 * Math.pow(1.1, botnetAmount));
+	phishingSitePrice = Math.floor(100 * Math.pow(1.15, phishingSiteAmount));
+	botnetPrice = Math.floor(1000 * Math.pow(1.2, botnetAmount));
+	superComputerPrice = Math.floor(10000 * Math.pow(1.25, superComputerAmount));
 
 	printKeyloggers();
 	printPhishingSites();
 	printBotnets();
+	printSuperComputers();
 }
 
 function printBits() {
+	justifyCounter();
 	document.getElementById("bitsCounter").innerHTML = "Bits: " + bits.toFixed(1);
+}
+
+function justifyCounter() {
+	if (bits > 100)
+		document.getElementById("bitsCounter").style.left = "9%";
+	if (bits > 1000)
+		document.getElementById("bitsCounter").style.left = "10%";
+	if (bits > 10000) {
+		document.getElementById("bitsCounter").style.left = "11%";
+		justifyCounter = function(){};
+	}
 }
 
 function printKeyloggers() {
@@ -153,6 +189,10 @@ function printBotnets() {
 	document.getElementById("botnetBtn").innerHTML = "Botnets: " + botnetAmount + `&nbsp;&nbsp;&nbsp;&nbsp;` + "Bits/Sec: " + (botnetAmount * 10).toFixed(1) + `<br>` + "Price: " + botnetPrice;
 }
 
+function printSuperComputers() {
+	document.getElementById("superComputerBtn").innerHTML = "Super Computers: " + superComputerAmount + `&nbsp;&nbsp;&nbsp;&nbsp;` + "Bits/Sec: " + (superComputerAmount * 100).toFixed(1) + `<br>` + "Price: " + superComputerPrice;
+}
+
 function createOverlay() {
 	document.getElementById("animationArea").style.visibility = "visible";
 	document.getElementById("upgradeArea").style.visibility = "visible";
@@ -162,6 +202,7 @@ window.setInterval(function() {
 	updateBits(keyloggerAmount * 0.1);
 	updateBits(phishingSiteAmount * 1);
 	updateBits(botnetAmount * 10);
+	updateBits(superComputerAmount * 100);
 }, 1000);
 
 window.setInterval(function() {

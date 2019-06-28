@@ -6,6 +6,10 @@ let keyloggerAmount = 0;
 let keyloggerPrice = 10;
 let phishingSiteAmount = 0;
 let phishingSitePrice = 100;
+let botnetAmount = 0;
+let botnetPrice = 1000;
+let superComputerAmount = 0;
+let superComputerPrice = 10000;
 
 function pageInit() {
 	let btn = document.getElementById("btn");
@@ -15,6 +19,7 @@ function pageInit() {
 	
 	let keyloggerBtn = document.getElementById("keyloggerBtn");
 	let phishingSiteBtn = document.getElementById("phishingSiteBtn");
+	let botnetBtn = document.getElementById("botnetBtn");
 
 	btn.addEventListener('click', removeButton);
 	clickerBtn.addEventListener('click', function(){updateBits(clickBitsAmount)});
@@ -23,6 +28,7 @@ function pageInit() {
 
 	keyloggerBtn.addEventListener('click', function(){buyUpgrade(1)});
 	phishingSiteBtn.addEventListener('click', function(){buyUpgrade(2)});
+	botnetBtn.addEventListener('click', function(){buyUpgrade(3)});
 	
 	loadGameState();
 }
@@ -55,6 +61,8 @@ function saveGameState() {
 	localStorage.setItem('keyloggerPrice', keyloggerPrice);
 	localStorage.setItem('phishingSiteAmount', phishingSiteAmount);
 	localStorage.setItem('phishingSitePrice', phishingSitePrice);
+	localStorage.setItem('botnetAmount', botnetAmount);
+	localStorage.setItem('botnetPrice', botnetPrice);
 }
 
 function autoSavePopup() {
@@ -80,6 +88,11 @@ function loadGameState() {
 		phishingSitePrice = parseInt(localStorage.getItem('phishingSitePrice'));
 		printPhishingSites();
 	}
+	if (localStorage.getItem('botnetAmount') !== null) {
+		botnetAmount = parseInt(localStorage.getItem('botnetAmount'));
+		botnetPrice = parseInt(localStorage.getItem('botnetPrice'));
+		printBotnets();
+	}
 }
 
 function buyUpgrade(selector) {
@@ -102,14 +115,26 @@ function buyUpgrade(selector) {
 				printBits();
 				printPhishingSites();
 			}
+		case 3:
+			if (bits >= botnetPrice) {
+				bits -= botnetPrice;
+				botnetAmount++;
+				botnetPrice = Math.floor(1000 * Math.pow(1.1, botnetAmount));
+
+				printBits();
+				printBotnets();
+			}
 	}
 }
 
 function updatePriceChanges() {
 	keyloggerPrice = Math.floor(10 * Math.pow(1.1, keyloggerAmount));
 	phishingSitePrice = Math.floor(100 * Math.pow(1.1, phishingSiteAmount));
+	botnetPrice = Math.floor(1000 * Math.pow(1.1, botnetAmount));
+
 	printKeyloggers();
 	printPhishingSites();
+	printBotnets();
 }
 
 function printBits() {
@@ -117,11 +142,15 @@ function printBits() {
 }
 
 function printKeyloggers() {
-	document.getElementById("keyloggerBtn").innerHTML = "Keyloggers: " + keyloggerAmount + `&nbsp;&nbsp;&nbsp;&nbsp;` + "Bits/Sec: " + keyloggerAmount * 0.1 + `<br>` + "Price: " + keyloggerPrice;
+	document.getElementById("keyloggerBtn").innerHTML = "Keyloggers: " + keyloggerAmount + `&nbsp;&nbsp;&nbsp;&nbsp;` + "Bits/Sec: " + (keyloggerAmount * 0.1).toFixed(1) + `<br>` + "Price: " + keyloggerPrice;
 }
 
 function printPhishingSites() {
-	document.getElementById("phishingSiteBtn").innerHTML = "Phishing Sites: " + phishingSiteAmount + `&nbsp;&nbsp;&nbsp;&nbsp;` + "Bits/Sec: " + phishingSiteAmount * 1 + `<br>` + "Price: " + phishingSitePrice;
+	document.getElementById("phishingSiteBtn").innerHTML = "Phishing Sites: " + phishingSiteAmount + `&nbsp;&nbsp;&nbsp;&nbsp;` + "Bits/Sec: " + (phishingSiteAmount * 1).toFixed(1) + `<br>` + "Price: " + phishingSitePrice;
+}
+
+function printBotnets() {
+	document.getElementById("botnetBtn").innerHTML = "Botnets: " + botnetAmount + `&nbsp;&nbsp;&nbsp;&nbsp;` + "Bits/Sec: " + (botnetAmount * 10).toFixed(1) + `<br>` + "Price: " + botnetPrice;
 }
 
 function createOverlay() {
@@ -132,6 +161,7 @@ function createOverlay() {
 window.setInterval(function() {
 	updateBits(keyloggerAmount * 0.1);
 	updateBits(phishingSiteAmount * 1);
+	updateBits(botnetAmount * 10);
 }, 1000);
 
 window.setInterval(function() {

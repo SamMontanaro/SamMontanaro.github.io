@@ -1,4 +1,3 @@
-window.btnClicked = 0;
 let bits = 0;
 let clickBitsAmount = 1;
 
@@ -12,7 +11,6 @@ let superComputerAmount = 0;
 let superComputerPrice = 10000;
 
 function pageInit() {
-	let btn = document.getElementById("btn");
 	let clickerBtn = document.getElementById("clickerButton");
 	let saveBtn = document.getElementById("saveBtn");
 	let loadBtn = document.getElementById("loadBtn");
@@ -22,7 +20,6 @@ function pageInit() {
 	let botnetBtn = document.getElementById("botnetBtn");
 	let superComputerBtn = document.getElementById("superComputerBtn");
 
-	btn.addEventListener('click', removeButton);
 	clickerBtn.addEventListener('click', function(){updateBits(clickBitsAmount)});
 	saveBtn.addEventListener('click', saveGameState);
 	loadBtn.addEventListener('click', loadGameState);
@@ -35,19 +32,10 @@ function pageInit() {
 	loadGameState();
 }
 
-function removeButton() {
-	window.btnClicked++;
-	if (window.btnClicked == 1)
-		document.getElementById("btn").value = "Are you sure?";
-	else if (window.btnClicked == 2)
-		document.getElementById("btn").value = "Then lets go!"
-	else if (window.btnClicked >= 3) {
-		createOverlay();
-		var elem = document.getElementById("btn");
-		elem.parentNode.removeChild(elem);
-		delete window.btnClicked;
+window.onclick = function(event) {
+	if (event.target == updateLogModal) {
+		updateLogModal.style.display = "none";
 	}
-	return false;
 }
 
 function updateBits(amount) {
@@ -191,11 +179,6 @@ function printBotnets() {
 
 function printSuperComputers() {
 	document.getElementById("superComputerBtn").innerHTML = "Super Computers: " + superComputerAmount + `&nbsp;&nbsp;&nbsp;&nbsp;` + "Bits/Sec: " + (superComputerAmount * 100).toFixed(1) + `<br>` + "Price: " + superComputerPrice;
-}
-
-function createOverlay() {
-	document.getElementById("animationArea").style.visibility = "visible";
-	document.getElementById("upgradeArea").style.visibility = "visible";
 }
 
 window.setInterval(function() {

@@ -22,6 +22,17 @@
 	}
 }
 
+@keyframes modalOpenFromBottom {
+	from {
+		top: -20vmax;
+		opacity: 0;
+	}
+	to {
+		top: 0;
+		opacity: 1;
+	}
+}
+
 body {
 	background: url(images/invertPlotSquare.png) repeat 0 0;
 	background-size: 3.2552083vmax 3.2552083vmax;
@@ -32,20 +43,61 @@ body {
 	font-size: 1.3vmax;
 }
 
-#btn {
-	background-color: crimson;
-	border: none;
-	position: fixed;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	height: 8%;
-	padding: 1% 2%;
-	font-size: 100%;
-	color: white;
-	text-align: center;
+#updateLogModal {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	left: 0;
+	top: 0;
+	overflow: auto;
+	position: absolute;
+	z-index: 1;
+	background-color: rgba(0, 0, 0, 0.5);
+}
+
+#updateLogContent {
+	width: 50%;
+	margin-left: 25%;
+	color: black;
+	position: absolute;
 	text-decoration: none;
+	-webkit-touch-callout: none;
+    -webkit-user-select: none;
+     -khtml-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+	animation-name: modalOpenFromBottom;
+	animation-timing-function: linear;
+	animation-duration: 1s;
+}
+
+#closeBtn {
+	color: black;
+	float: right;
+	font-weight: bold;
+	margin-right: 1vmax;
+	margin-top: -0.5vmax;
+}
+
+#closeBtn:hover {
+	color:	lime;
 	cursor: pointer;
+}
+
+#updateLogHeader {
+	text-align: center;
+	background-color: white;
+	margin: 0;
+}
+
+#updateLogVersions {
+	margin: 0;
+	padding-top: 1vmax;
+	padding-left: 1vmax;
+	padding-bottom: 1vmax;
+	text-align: left;
+	background-color: lightgrey;
 }
 
 #saveBtn, #loadBtn {
@@ -86,7 +138,6 @@ body {
 	width: 75%;
 	right: 75%;
 	background-color: rgba(255,255,255,0.15);
-	visibility: hidden;
 }
 
 #bitsCounter {
@@ -142,7 +193,6 @@ body {
 	background: url(images/cutGreenFallingCode.png) no-repeat;
 	background-size: 100% 1.3vmax;
 	box-shadow:inset 0px 0px 0px 0.65vmax #0a0;
-	visibility: hidden;
 	overflow: hidden;
 	position: absolute;
 }
@@ -171,7 +221,7 @@ body {
             user-select: none;
 }
 
-td {
+#keyloggerBtn, #phishingSiteBtn, #botnetBtn, #superComputerBtn {
 	width: 21.5vmax;
 	padding: 1vmax;
 	background: url(images/UpgradeButtons.png) no-repeat;

@@ -11,6 +11,7 @@ let superComputerAmount = 0;
 let superComputerPrice = 10000;
 
 function pageInit() {
+	let closeBtn = document.getElementById("closeBtn");
 	let clickerBtn = document.getElementById("clickerButton");
 	let saveBtn = document.getElementById("saveBtn");
 	let loadBtn = document.getElementById("loadBtn");
@@ -20,6 +21,7 @@ function pageInit() {
 	let botnetBtn = document.getElementById("botnetBtn");
 	let superComputerBtn = document.getElementById("superComputerBtn");
 
+	closeBtn.addEventListener('click', closeModal);
 	clickerBtn.addEventListener('click', function(){updateBits(clickBitsAmount)});
 	saveBtn.addEventListener('click', saveGameState);
 	loadBtn.addEventListener('click', loadGameState);
@@ -36,6 +38,10 @@ window.onclick = function(event) {
 	if (event.target == updateLogModal) {
 		updateLogModal.style.display = "none";
 	}
+}
+
+function closeModal() {
+	document.getElementById("updateLogModal").style.display = "none";
 }
 
 function updateBits(amount) {

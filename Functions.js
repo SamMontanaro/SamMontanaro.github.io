@@ -22,7 +22,7 @@ function pageInit() {
 	let superComputerBtn = document.getElementById("superComputerBtn");
 
 	closeBtn.addEventListener('click', closeModal);
-	clickerBtn.addEventListener('click', function(){updateBits(clickBitsAmount)});
+	clickerBtn.addEventListener('click', clickerButtonClicked);
 	saveBtn.addEventListener('click', saveGameState);
 	loadBtn.addEventListener('click', loadGameState);
 
@@ -44,9 +44,22 @@ function closeModal() {
 	document.getElementById("updateLogModal").style.display = "none";
 }
 
+function clickerButtonClicked() {
+	animateButton();
+	updateBits(clickBitsAmount);
+}
+
 function updateBits(amount) {
 	bits += amount;
 	printBits();
+}
+
+function animateButton() {
+	let clickerBtn = document.getElementById("clickerButton");
+	clickerBtn.classList.add("clickerButtonClicked");
+	setTimeout(function(){
+		clickerBtn.classList.remove("clickerButtonClicked");
+	}, 100);
 }
 
 function saveGameState() {
@@ -161,14 +174,8 @@ function printBits() {
 }
 
 function justifyCounter() {
-	if (bits > 100)
-		document.getElementById("bitsCounter").style.left = "9%";
-	if (bits > 1000)
-		document.getElementById("bitsCounter").style.left = "10%";
-	if (bits > 10000) {
-		document.getElementById("bitsCounter").style.left = "11%";
-		justifyCounter = function(){};
-	}
+	var length = bits.toString().length - 6;
+	document.getElementById("bitsCounter").style.left = length + "%";
 }
 
 function printKeyloggers() {

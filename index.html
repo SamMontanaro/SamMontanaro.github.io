@@ -1,4 +1,5 @@
-﻿<html>
+﻿<!DOCTYPE html>
+<html lang="en-US">
 <head>
 	<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,6 +17,14 @@
 			</div>
 			<h1 id="updateLogHeader">Update Log</h1>
 			<p id="updateLogVersions">
+				Version 0.10<br>
+				7/17/2019<br><br>
+
+				- Changed the clicker button and gave it an animation when clicked.<br>
+				- Added hoverable options menu.<br>
+				- Changed render mode from quirks to standard compliance.<br>
+				- Improved resizing of the upgrade area table.<br>
+				<br>
 				Version 0.00<br>
 				6/29/19<br><br>
 
@@ -28,12 +37,19 @@
 	<div id="animationArea">
 		<p id="bitsCounter">Bits: 0.0</p>
 
-		<input id="saveBtn" type="button" value="Save"/>
-		<input id="loadBtn" type="button" value="Load"/>
+		<div class="optionsDropdown">
+			<p id="optionsBtn">Options</p>
+			<div class="optionsContent">
+				<p id="saveBtn">Save</p>
+				<p id="loadBtn">Load</p>
+			</div>
+		</div>
+
 
 		<div id="antiIdler">
-			<p style="color: white">Click Here!</p>
-			<input id="clickerButton" type="button"/>
+			<div id="clickerButtonArea">
+				<div id="clickerButton"></div>
+			</div> 
 		</div>
 
 		<div id="autosaveArea">

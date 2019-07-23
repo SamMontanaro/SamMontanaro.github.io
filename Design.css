@@ -106,8 +106,6 @@ body {
 	color: white;
 	font-size: 100%;
 	text-align: center;
-	text-decoration: none;
-	outline: none;
 	padding: 0.5% 2%;
 	margin-left: 1vmax;
 	float: right;
@@ -132,7 +130,6 @@ body {
 	bottom: 0;
 	right: 0;
 	position: absolute;
-	margin: auto;
 	height: 100%;
 }
 
@@ -143,17 +140,15 @@ body {
 }
 
 #bitsCounter {
+	margin-top: 0px;
+	margin-bottom: 0px;
 	padding: 1.3vmax 1.3vmax 1.3vmax 1.3vmax;
-	width: 50%;
-	border-bottom-right-radius: 50%;
-	overflow: hidden;
-	font-size: 2.6vmax;
+	width: 19%;
+	font-size: 2vmax;
 	color: white;
 	background-color: rgba(0,0,0,0.7);
-	left: 8%;
-	transform: translate(-50%, -50%);
 	position: fixed;
-	text-align: center;
+	text-align: left;
 	text-decoration: none;
 }
 
@@ -192,13 +187,9 @@ body {
 #upgradeArea {
 	width: 25%;
 	left: 75%;
-	background: url(images/cutGreenFallingCode.png) no-repeat;
-	background-size: 100% 1.3vmax;
-	/*box-shadow:inset 0px 0px 0px 0.65vmax #0a0;*/
 	box-sizing: border-box;
-	border-left: 0.65vmax solid green;
+	border: 0.65vmax solid green;
 	overflow-x: hidden;
-	overflow-y: scroll;
 	position: absolute;
 }
 
@@ -208,19 +199,79 @@ body {
 	color: white;
 }
 
+#unlockedUpgrades {
+	height: 3.256vmax;
+	padding: 1vmax;
+	border-top: green 0.65vmax solid;
+	border-bottom: green 0.65vmax solid;
+}
+
+#unlockedUpgrades button {
+	width: 3.256vmax;
+	height: 3.256vmax;
+	background-size:  3.255208vmax  3.255208vmax;
+	border: white 0.1vmax solid;
+	cursor: pointer;
+}
+
+#unlockedUpgrades button:nth-child(n + 6){
+	margin-top: 0.5vmax;
+}
+
+#clickerUpgrade1 {
+	background: url(images/achievementImages/bronzeCursor.png) no-repeat;
+	display: none;
+}
+
+#clickerUpgrade2 {
+	background: url(images/achievementImages/silverCursor.png) no-repeat;
+	display: none;
+}
+
+#clickerUpgrade3 {
+	background: url(images/achievementImages/goldCursor.png) no-repeat;
+	display: none;
+}
+
+#clickerUpgrade4 {
+	background: url(images/achievementImages/platinumCursor.png) no-repeat;
+	display: none;
+}
+
+#CU1-hoverText, #CU2-hoverText, #CU3-hoverText, #CU4-hoverText{
+	position: relative;
+	width: 16vmax;
+	height: 18vmax;
+	top: 11%;
+	left: 11%;
+	padding: 0.5vmax 1vmax;
+	float: right;
+	background-color: #fff;
+	display: none;
+	text-align: center;
+	line-height: 1.2em;
+}
+
 #upgradeList {
 	transform: translate(0.65vmax);
+	margin-top: 0.65vmax;
 	padding-right: 1.3vmax;
-	text-decoration: none;
 	color: white;
+	overflow-y: scroll;
 }
 
 #keyloggerBtn, #phishingSiteBtn, #botnetBtn, #superComputerBtn {
+	font-size: 1.1vmax;
 	width: 21.5vmax;
 	padding: 1vmax;
 	background: url(images/UpgradeButtons.png) no-repeat;
 	background-size: 100% 10.612vmax;
 	cursor: pointer;
+}
+
+.greyedOut {
+	opacity: 0.6;
+	cursor: default !important;
 }
 
 #autosaveArea {

@@ -1,15 +1,24 @@
 ﻿<!DOCTYPE html>
 <html lang="en-US">
 <head>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-144131264-1"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', 'UA-144131264-1');
+	</script>
+
 	<meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="Design.css" />
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Exo:Light" />
-	<script type="text/javascript" src="Functions.js"> </script>
 	<title>CS Clicker</title>
+	<script type="text/javascript" src="Functions.js"> </script>
 </head>
 <body>
-	
 	<div id="updateLogModal">
 		<div id="updateLogContent">
 			<div id="closeBtn">
@@ -17,39 +26,98 @@
 			</div>
 			<h1 id="updateLogHeader">Update Log</h1>
 			<p id="updateLogVersions">
-				Version 0.10<br>
-				7/17/2019<br><br>
+				Version 0.20<br/>
+				7/22/2019<br/><br/>
 
-				- Changed the clicker button and gave it an animation when clicked.<br>
-				- Added hoverable options menu.<br>
-				- Changed render mode from quirks to standard compliance.<br>
-				- Improved resizing of the upgrade area table.<br>
-				<br>
-				Version 0.00<br>
-				6/29/19<br><br>
+				- Added a bits per second and a bits per click statistic.<br/>
+				- All numbers over 1000 are now converted into short form.<br/>
+				- Added 4 achievements/upgrades for 500, 2500, 5000, and 9001 clicks.<br/>
+				- Added a reset button for testing purposes.<br/>
+				- Improved efficiency, closer to stable 60 FPS.<br/>
+				- More content using the same amount of localStorage space.<br/>
+				- Added google analytics to the page.<br/><br/>
 
-				- Added update log modal.<br>
-				- Removed start button and all associated functions.<br>
+				Short Term Goals:<br/>
+				- Options menu modal.<br/>
+				- Ability to switch between short form and scientific notation in the new options menu.<br/>
+				- Upgrades and achievements for hitting 10/25/50/100 of each 'building'.<br/>
+				- Additional 'buildings'.<br/>
+				- Floating number text every time you click the button.<br/><br/>
+
+				Long Term Goals:<br/>
+				- Create an achievement menu.<br/>
+				- Add a soft reset mechanic.<br/>
+				- More art! :) <br/><br/>
+
+				Version 0.10<br/>
+				7/17/2019<br/><br/>
+
+				- Changed the clicker button and gave it an animation when clicked.<br/>
+				- Added hoverable options menu.<br/>
+				- Changed render mode from quirks to standard compliance.<br/>
+				- Improved resizing of the upgrade area table.<br/><br/>
+				
+				Version 0.00<br/>
+				6/29/19<br/><br/>
+
+				- Added update log modal.<br/>
+				- Removed start button and all associated functions.<br/>
 			</p>
 		</div>>
 	</div>
 	
 	<div id="animationArea">
-		<p id="bitsCounter">Bits: 0.0</p>
+		<p id="bitsCounter">
+			Bits: 0.0<br/>
+			Bits Per Sec: 0.0<br/>
+			Bits Per Click: 1.0
+		</p>
 
 		<div class="optionsDropdown">
 			<p id="optionsBtn">Options</p>
 			<div class="optionsContent">
 				<p id="saveBtn">Save</p>
 				<p id="loadBtn">Load</p>
+				<p id="resetBtn">Reset</p>
 			</div>
 		</div>
-
 
 		<div id="antiIdler">
 			<div id="clickerButtonArea">
 				<div id="clickerButton"></div>
 			</div> 
+		</div>
+
+		<div id="CU1-hoverText">
+			<h3>Just The Beginning</h3>
+			Reached 500 Clicks!<br/>
+			I see carpal tunnel in your future.<br/><br/>
+			Price: 750 Bits<br/>
+			+1% Bits Per Sec to your Click Power!
+		</div>
+
+		<div id="CU2-hoverText">
+			<h3>Persistence Is Key</h3>
+			Reached 2500 Clicks!<br/>
+			Maybe the autoclicker isn't as bad of an idea as I thought.<br/><br/>
+			Price: 5k Bits<br/>
+			+2% Bits Per Sec to your Click Power!
+		</div>
+
+		<div id="CU3-hoverText">
+			<h3>Pure Automation</h3>
+			Reached 5000 Clicks!<br/>
+			An army of mice at your service, I see.<br/><br/>
+			Price: 10k Bits<br/>
+			+3% Bits Per Sec to your Click Power!
+		</div>
+
+		<div id="CU4-hoverText">
+			<h3>It's Overused!</h3>
+			Reached Over 9000 Clicks!
+			Yeah, we know, you don't have to say it.<br/><br/>
+			Price: 20k Bits<br/>
+			+4% Bits Per Sec to your Click Power!
 		</div>
 
 		<div id="autosaveArea">
@@ -59,34 +127,38 @@
 
 	<div id="upgradeArea">
 		<h1 id="upgradeHeader">Upgrade Area</h1>
+		<div id="unlockedUpgrades">
+			<button id="clickerUpgrade1"></button>
+			<button id="clickerUpgrade2"></button>
+			<button id="clickerUpgrade3"></button>
+			<button id="clickerUpgrade4"></button>
+		</div>
 		<table id="upgradeList">
 			<tr>
 				<td id="keyloggerBtn">
-					Keyloggers: 0&nbsp;&nbsp;&nbsp;&nbsp;Bits/Sec: 0<br>
+					Keyloggers: 0&nbsp;&nbsp;&nbsp;&nbsp;Bits/Sec: 0<br/>
 					Price: 10
 				</td>
 			</tr>
 			<tr>
 				<td id="phishingSiteBtn">
-					Phishing Sites: 0&nbsp;&nbsp;&nbsp;&nbsp;Bits/Sec: 0<br>
+					Phishing Sites: 0&nbsp;&nbsp;&nbsp;&nbsp;Bits/Sec: 0<br/>
 					Price: 100
 				</td>
 			</tr>
 			<tr>
 				<td id="botnetBtn">
-					Botnets: 0&nbsp;&nbsp;&nbsp;&nbsp;Bits/Sec: 0<br>
+					Botnets: 0&nbsp;&nbsp;&nbsp;&nbsp;Bits/Sec: 0<br/>
 					Price: 1000
 				</td>
 			</tr>
 			<tr>
 				<td id="superComputerBtn">
-					Super Computers: 0&nbsp;&nbsp;&nbsp;&nbsp;Bits/Sec: 0<br>
+					Super Computers: 0&nbsp;&nbsp;&nbsp;&nbsp;Bits/Sec: 0<br/>
 					Price: 10000
 				</td>
 			</tr>
 		</table>
 	</div>
-
-	<script>pageInit();</script>
 </body>
 </html>

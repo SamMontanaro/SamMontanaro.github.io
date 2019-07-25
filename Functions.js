@@ -2,6 +2,7 @@
 let bits = 0;
 let bitsPerSec = 0;
 let bitsPerClick = 1;
+let buttonClicked = 0;
 
 let keyloggerAmount = 0;
 let keyloggerPrice = 10;
@@ -16,7 +17,7 @@ let clickerAchievements = [500, 2500, 5000, 9001];
 let clickerUpgradesUnlocked = [false, false, false, false];
 let clickerUpgradesBought = [false, false, false, false];
 let clickerUpgrades = [];
-let buttonClicked = 0;
+let keyloggerUpgrades = [];
 
 let largeNums = [1000, 1000000, 1000000000, 1000000000000, 1000000000000000, 1000000000000000000, 1000000000000000000000, 1000000000000000000000000, 1000000000000000000000000000, 1000000000000000000000000000000, 1000000000000000000000000000000000];
 let largeNumAbbr = ["K", "M", "B", "T", "Qa", "Qi", "Sx", "Sp", "Oc", "No", "Dc"];
@@ -38,6 +39,12 @@ window.onload = function() {
 	let CU3 = document.getElementById("clickerUpgrade3");
 	let CU4 = document.getElementById("clickerUpgrade4");
 	clickerUpgrades = [CU1, CU2, CU3, CU4];
+
+	let KU1 = document.getElementById("keyloggerUpgrade1");
+	let KU2 = document.getElementById("keyloggerUpgrade2");
+	let KU3 = document.getElementById("keyloggerUpgrade3");
+	let KU4 = document.getElementById("keyloggerUpgrade4");
+	keyloggerUpgrades = [KU1, KU2, KU3, KU4];
 
 	closeBtn.addEventListener('click', closeModal);
 	clickerBtn.addEventListener('click', clickerButtonClicked);
@@ -365,7 +372,8 @@ var obj = {
 		for (let [i, value] of clickerAchievements.entries()) {
 			if (buttonClicked >= value) {
 				clickerUpgradesUnlocked[i] = true;
-				clickerUpgrades[i].style.display = "inline-block";
+				if (!clickerUpgradesBought[i])
+					clickerUpgrades[i].style.display = "inline-block";
 			}
 		}
 	}

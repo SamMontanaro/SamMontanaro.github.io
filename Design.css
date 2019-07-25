@@ -190,10 +190,16 @@ body {
 	box-sizing: border-box;
 	border: 0.65vmax solid green;
 	overflow-x: hidden;
+	scrollbar-width: none;
 	position: absolute;
 }
 
 #upgradeHeader {
+	position: sticky;
+	top: 1.741vmax;
+	padding-bottom: 1.741vmax;
+	margin-bottom: 0;
+	border-bottom: green 0.65vmax solid;
 	text-align: center;
 	text-decoration: none;
 	color: white;
@@ -202,7 +208,6 @@ body {
 #unlockedUpgrades {
 	height: 3.256vmax;
 	padding: 1vmax;
-	border-top: green 0.65vmax solid;
 	border-bottom: green 0.65vmax solid;
 }
 
@@ -238,7 +243,27 @@ body {
 	display: none;
 }
 
-#CU1-hoverText, #CU2-hoverText, #CU3-hoverText, #CU4-hoverText{
+#keyloggerUpgrade1 {
+	background: url(images/achievementImages/keylogger1.png) no-repeat;
+	display: none;
+}
+
+#keyloggerUpgrade2 {
+	background: url(images/achievementImages/keylogger2.png) no-repeat;
+	display: none;
+}
+
+#keyloggerUpgrade3 {
+	background: url(images/achievementImages/keylogger3.png) no-repeat;
+	display: none;
+}
+
+#keyloggerUpgrade4 {
+	background: url(images/achievementImages/keylogger4.png) no-repeat;
+	display: none;
+}
+
+#CU1-hoverText, #CU2-hoverText, #CU3-hoverText, #CU4-hoverText, #KU1-hoverText {
 	position: relative;
 	width: 16vmax;
 	height: 18vmax;
@@ -258,6 +283,10 @@ body {
 	padding-right: 1.3vmax;
 	color: white;
 	overflow-y: scroll;
+}
+
+#upgradeList:last-child {
+	padding-bottom: 0.65vmax;
 }
 
 #keyloggerBtn, #phishingSiteBtn, #botnetBtn, #superComputerBtn {

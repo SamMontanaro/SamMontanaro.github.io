@@ -1,5 +1,6 @@
 # SamMontanaro.github.io
 
-Using github pages to host an incremental game
+Access the latest version of this idle game, CS Clicker, by going to:
+https://sammontanaro.github.io/
 
-In progress currently, barely started on it and working with JS for the first time!
+This page is the first time I've used JS, and is a work in progress.

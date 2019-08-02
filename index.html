@@ -15,6 +15,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="Design.css" />
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Exo:Light" />
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Luckiest+Guy&display=swap" > 
 	<title>CS Clicker</title>
 	<script type="text/javascript" src="Functions.js"> </script>
 </head>
@@ -26,6 +27,16 @@
 			</div>
 			<h1 id="updateLogHeader">Update Log</h1>
 			<p id="updateLogVersions">
+				Version 0.30<br/>
+				8/2/2019<br/><br/>
+
+				- Unleash more of your devilish desires with our new building, ransomware!<br/>
+				- Added 8 new achievements/upgrades, 4 for keyloggers and 4 for phishing sites, both sets for reaching 10, 25, 50, and 100 of each respective building.<br/>
+				- Everything glows! Tiny bit of a redesign, everything just looks a bit better.<br/>
+				- Floating number damage text!<br/>
+				- Renamed "Upgrade Area" to "Black Hat Bazaar" (BG art coming soon).<br/>
+				- Fixed several bugs involving various combinations of saving, loading, and resetting at various times when unlocking and buying achievement spawned upgrades.<br/><br/>
+
 				Version 0.21<br/>
 				7/24/2019<br/><br/>
 
@@ -71,7 +82,7 @@
 				- Added update log modal.<br/>
 				- Removed start button and all associated functions.<br/>
 			</p>
-		</div>>
+		</div>
 	</div>
 	
 	<div id="animationArea">
@@ -90,12 +101,10 @@
 			</div>
 		</div>
 
-		<div id="antiIdler">
-			<div id="clickerButtonArea">
-				<div id="clickerButton"></div>
-			</div> 
-		</div>
-
+		<div id="clickerButton"></div>
+		
+		<div id="clickText"></div>
+		
 		<div id="CU1-hoverText">
 			<h3>Just The Beginning</h3>
 			Reached 500 Clicks!<br/>
@@ -122,18 +131,74 @@
 
 		<div id="CU4-hoverText">
 			<h3>It's Overused!</h3>
-			Reached Over 9000 Clicks!
+			Reached Over 9000 Clicks!<br/>
 			Yeah, we know, you don't have to say it.<br/><br/>
 			Price: 20k Bits<br/>
 			+4% Bits Per Sec to your Click Power!
 		</div>
 
 		<div id="KU1-hoverText">
-			<h3>Smol Brain Syndrome</h3>
-			Reached 10 Keyloggers!
+			<h3>A Solid 50 WPM</h3>
+			Reached 10 Keyloggers!<br/>
 			Infecting people for all their bits has never been so fun!<br/><br/>
-			Price: 250 Bits<br/>
-			+0.4 Bits Per Sec per Keylogger!<br/>
+			Price: 100 Bits<br/>
+			+100% Bits Per Sec per Keylogger!<br/>
+		</div>
+
+		<div id="KU2-hoverText">
+			<h3>Ooh A Piece Of <del>Candy</del> Password!</h3>
+			Reached 25 Keyloggers!<br/>
+			We even got Myspace logins!<br/><br/>
+			Price: 500 Bits<br/>
+			+100% Bits Per Sec per Keylogger!<br/>
+		</div>
+
+		<div id="KU3-hoverText">
+			<h3>We're Like Your Secret FBI Agent</h3>
+			Reached 50 Keyloggers!<br/>
+			We've seen some horrible things... please stop it Michael.<br/><br/>
+			Price: 2.5K Bits<br/>
+			+100% Bits Per Sec per Keylogger!<br/>
+		</div>
+
+		<div id="KU4-hoverText">
+			<h3>Mission Accomplished</h3>
+			Reached 100 Keyloggers!<br/>
+			Finally, we found someone who responded to that lonely Nigerian prince.<br/><br/>
+			Price: 200k Bits<br/>
+			+100% Bits Per Sec per Keylogger!<br/>
+		</div>
+
+		<div id="PU1-hoverText">
+			<h3>Something Catchy</h3>
+			Reached 10 Phishing Sites!<br/>
+			What kind of music should you listen to while fishing? Read above.<br/><br/>
+			Price: 2.5K Bits<br/>
+			+100% Bits Per Sec per Phishing Site!<br/>
+		</div>
+
+		<div id="PU2-hoverText">
+			<h3>Gotta Catch Them All!</h3>
+			Reached 25 Phishing Sites!<br/>
+			I will be the very best, that no bit ever was.<br/><br/>
+			Price: 50k Bits<br/>
+			+100% Bits Per Sec per Phishing Site!<br/>
+		</div>
+
+		<div id="PU3-hoverText">
+			<h3>Phisher-Price</h3>
+			Reached 50 Phishing Sites!<br/>
+			Founded June 19, 1930. Completely unrelated to Fisher-Price.<br/><br/>
+			Price: 100k Bits<br/>
+			+100% Bits Per Sec per Phishing Site!<br/>
+		</div>
+
+		<div id="PU4-hoverText">
+			<h3>You Won $1000O00 Sweepstake!</h3>
+			Reached 100 Phishing Sites!<br/>
+			Claim here right now! All we need is your first and second born children!<br/><br/>
+			Price: 500k Bits<br/>
+			+100% Bits Per Sec per Phishing Site!<br/>
 		</div>
 
 		<div id="autosaveArea">
@@ -142,17 +207,8 @@
 	</div>
 
 	<div id="upgradeArea">
-		<h1 id="upgradeHeader">Upgrade Area</h1>
-		<div id="unlockedUpgrades">
-			<button id="clickerUpgrade1"></button>
-			<button id="clickerUpgrade2"></button>
-			<button id="clickerUpgrade3"></button>
-			<button id="clickerUpgrade4"></button>
-			<button id="keyloggerUpgrade1"></button>
-			<button id="keyloggerUpgrade2"></button>
-			<button id="keyloggerUpgrade3"></button>
-			<button id="keyloggerUpgrade4"></button>
-		</div>
+		<h1 id="upgradeHeader">Black Hat Bazaar</h1>
+		<div id="unlockedUpgrades"></div>
 		<table id="upgradeList">
 			<tr>
 				<td id="keyloggerBtn">
@@ -167,15 +223,21 @@
 				</td>
 			</tr>
 			<tr>
+				<td id="ransomwareBtn">
+					Ransomware: 0&nbsp;&nbsp;&nbsp;&nbsp;Bits/Sec: 0<br/>
+					Price: 1000
+				</td>
+			</tr>
+			<tr>
 				<td id="botnetBtn">
 					Botnets: 0&nbsp;&nbsp;&nbsp;&nbsp;Bits/Sec: 0<br/>
-					Price: 1000
+					Price: 10000
 				</td>
 			</tr>
 			<tr>
 				<td id="superComputerBtn">
 					Super Computers: 0&nbsp;&nbsp;&nbsp;&nbsp;Bits/Sec: 0<br/>
-					Price: 10000
+					Price: 100000
 				</td>
 			</tr>
 		</table>
